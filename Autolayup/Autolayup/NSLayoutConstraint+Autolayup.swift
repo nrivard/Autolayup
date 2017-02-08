@@ -14,7 +14,7 @@ extension UIView {
     /// for ex: [.top, .leading, .bottom, .trailing] would create constraints where self's frame is the same as the provided view's
     /// you could also use a convenience set of constraints like .frame, .size, or .center
     /// if activate is true (the default) then constraints will be activated for you.
-    public func constraintsEqualTo(_ view: UIView, constraintOptions: NSLayoutConstraintRelatedAttribute, activate: Bool = true) -> [NSLayoutConstraint] {
+    @discardableResult public func constraintsEqualTo(_ view: UIView, constraintOptions: NSLayoutConstraintRelatedAttribute, activate: Bool = true) -> [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         
         if constraintOptions.contains(.top) {
@@ -59,7 +59,7 @@ extension UIView {
     /// this function looks for specific pairings of layout constraints, offsets one by the offset, and offets another by -(offset)
     /// for ex: [.top, .bottom] offset by 8.0 would offset .top by 8 and .bottom by -8.0
     /// also supports [.leading, .trailing] right now
-    public func opposingConstraintsFor(_ view: UIView, opposingConstraints: NSLayoutConstraintRelatedAttribute, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
+    @discardableResult public func opposingConstraintsFor(_ view: UIView, opposingConstraints: NSLayoutConstraintRelatedAttribute, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
         let constraints: [NSLayoutConstraint]
         
         if opposingConstraints.contains(.top) && opposingConstraints.contains(.bottom) {
