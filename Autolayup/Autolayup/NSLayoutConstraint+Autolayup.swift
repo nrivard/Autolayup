@@ -59,7 +59,7 @@ extension UIView {
     /// this function looks for specific pairings of layout constraints, offsets one by the offset, and offets another by -(offset)
     /// for ex: [.top, .bottom] offset by 8.0 would offset .top by 8 and .bottom by -8.0
     /// also supports [.leading, .trailing] right now
-    public func opposingConstraintsFor(_ view: UIView, opposingConstraints: NSLayoutConstraintRelatedAttribute, offsetBy offset: CGFloat) -> [NSLayoutConstraint] {
+    public func opposingConstraintsFor(_ view: UIView, opposingConstraints: NSLayoutConstraintRelatedAttribute, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
         let constraints: [NSLayoutConstraint]
         
         if opposingConstraints.contains(.top) && opposingConstraints.contains(.bottom) {
@@ -68,6 +68,10 @@ extension UIView {
             constraints = [self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset), self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -offset)]
         } else {
             constraints = []
+        }
+        
+        if activate {
+            NSLayoutConstraint.activate(constraints)
         }
         
         return constraints
