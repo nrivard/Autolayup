@@ -50,6 +50,14 @@ extension UIView {
             constraints.append(self.widthAnchor.constraint(equalTo: view.widthAnchor, constant: constant))
         }
         
+        if constraintOptions.contains(.leadingMargin) {
+            constraints.append(NSLayoutConstraint(item: self, attribute: .leadingMargin, relatedBy: .equal, toItem: view, attribute: .leadingMargin, multiplier: 1.0, constant: constant))
+        }
+        
+        if constraintOptions.contains(.trailingMargin) {
+            constraints.append(NSLayoutConstraint(item: self, attribute: .trailingMargin, relatedBy: .equal, toItem: view, attribute: .trailingMargin, multiplier: 1.0, constant: constant))
+        }
+        
         if activate {
             NSLayoutConstraint.activate(constraints)
         }
