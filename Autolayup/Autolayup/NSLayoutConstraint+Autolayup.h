@@ -20,6 +20,7 @@ typedef NS_OPTIONS(NSUInteger, NSLayoutConstraintRelatedAttribute) {
     NSLayoutConstraintRelatedAttributeHeight = 1 << 6,
     NSLayoutConstraintRelatedAttributeWidth = 1 << 7,
     
+    /// start of combined section
     NSLayoutConstraintRelatedAttributeFrame = (NSLayoutConstraintRelatedAttributeTop | NSLayoutConstraintRelatedAttributeLeading | NSLayoutConstraintRelatedAttributeBottom | NSLayoutConstraintRelatedAttributeTrailing),
     NSLayoutConstraintRelatedAttributeSize = (NSLayoutConstraintRelatedAttributeHeight | NSLayoutConstraintRelatedAttributeWidth),
     NSLayoutConstraintRelatedAttributeCenter = (NSLayoutConstraintRelatedAttributeCenterX | NSLayoutConstraintRelatedAttributeCenterY),

@@ -12,41 +12,42 @@ extension UIView {
     
     /// creates constraints that are identical to the provided view's same constraints
     /// for ex: [.top, .leading, .bottom, .trailing] would create constraints where self's frame is the same as the provided view's
+    /// constant is more appropriate for a single constraint. if you want an inset you should really use opposingConstraintsFor(_:::)
     /// you could also use a convenience set of constraints like .frame, .size, or .center
     /// if activate is true (the default) then constraints will be activated for you.
-    @discardableResult public func constraintsEqualTo(_ view: UIView, constraintOptions: NSLayoutConstraintRelatedAttribute, activate: Bool = true) -> [NSLayoutConstraint] {
+    @discardableResult public func constraintsEqualTo(_ view: UIView, constraintOptions: NSLayoutConstraintRelatedAttribute, constant: CGFloat = 0.0, activate: Bool = true) -> [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         
         if constraintOptions.contains(.top) {
-            constraints.append(self.topAnchor.constraint(equalTo: view.topAnchor))
+            constraints.append(self.topAnchor.constraint(equalTo: view.topAnchor, constant: constant))
         }
         
         if constraintOptions.contains(.leading) {
-            constraints.append(self.leadingAnchor.constraint(equalTo: view.leadingAnchor))
+            constraints.append(self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant))
         }
         
         if constraintOptions.contains(.bottom) {
-            constraints.append(self.bottomAnchor.constraint(equalTo: view.bottomAnchor))
+            constraints.append(self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: constant))
         }
         
         if constraintOptions.contains(.trailing) {
-            constraints.append(self.trailingAnchor.constraint(equalTo: view.trailingAnchor))
+            constraints.append(self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: constant))
         }
         
         if constraintOptions.contains(.centerX) {
-            constraints.append(self.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+            constraints.append(self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant))
         }
         
         if constraintOptions.contains(.centerY) {
-            constraints.append(self.centerYAnchor.constraint(equalTo: view.centerYAnchor))
+            constraints.append(self.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant))
         }
         
         if constraintOptions.contains(.height) {
-            constraints.append(self.heightAnchor.constraint(equalTo: view.heightAnchor))
+            constraints.append(self.heightAnchor.constraint(equalTo: view.heightAnchor, constant: constant))
         }
         
         if constraintOptions.contains(.width) {
-            constraints.append(self.widthAnchor.constraint(equalTo: view.widthAnchor))
+            constraints.append(self.widthAnchor.constraint(equalTo: view.widthAnchor, constant: constant))
         }
         
         if activate {
