@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Autolayup"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "Everyone can use autolayout this close to the basket."
 
   # This description is used to generate tags and improve search results.
