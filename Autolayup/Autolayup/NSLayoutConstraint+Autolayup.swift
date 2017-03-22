@@ -15,6 +15,7 @@ extension UIView {
     /// constant is more appropriate for a single constraint. if you want an inset you should really use opposingConstraintsFor(_:::)
     /// you could also use a convenience set of constraints like .frame, .size, or .center
     /// if activate is true (the default) then constraints will be activated for you.
+    @objc(constraintsEqualToView:constraintOptions:constant:activate:)
     @discardableResult public func constraintsEqualTo(_ view: UIView, constraintOptions: NSLayoutConstraintRelatedAttribute, constant: CGFloat = 0.0, activate: Bool = true) -> [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         
@@ -68,6 +69,7 @@ extension UIView {
     /// this function looks for specific pairings of layout constraints, offsets one by the offset, and offets another by -(offset)
     /// for ex: [.top, .bottom] offset by 8.0 would offset .top by 8 and .bottom by -8.0
     /// also supports [.leading, .trailing] right now
+    @objc(opposingConstraintsForView:opposingConstraints:offset:activate:)
     @discardableResult public func opposingConstraintsFor(_ view: UIView, opposingConstraints: NSLayoutConstraintRelatedAttribute, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
         let constraints: [NSLayoutConstraint]
         
@@ -88,6 +90,7 @@ extension UIView {
     
     /// Creates a set constraint for a particular attribute without reference to another view
     /// ex: .height == 40.0
+    @objc(constraintForAttribute:constant:activate:)
     @discardableResult public func constraintFor(_ attribute: NSLayoutAttribute, equalTo constant: CGFloat, activate: Bool = true) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
         constraint.isActive = activate
