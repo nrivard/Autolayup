@@ -85,4 +85,10 @@ extension UIView {
         
         return constraints
     }
+    
+    /// Creates a set constraint for a particular attribute without reference to another view
+    /// ex: .height == 40.0
+    func constraintFor(_ attribute: NSLayoutAttribute, equalTo constant: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
+    }
 }
