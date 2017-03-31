@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		762848851E8ED6580039A141 /* Autolayup.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Autolayup.podspec; sourceTree = "<group>"; };
 		76831CB11E46CADD00083D1F /* Autolayup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autolayup.h; sourceTree = "<group>"; };
 		76831CB21E46CADD00083D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76831CC81E46CAF600083D1F /* NSLayoutConstraint+Autolayup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+Autolayup.h"; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 		76831CA41E46CADD00083D1F = {
 			isa = PBXGroup;
 			children = (
+				762848851E8ED6580039A141 /* Autolayup.podspec */,
 				76831CB01E46CADD00083D1F /* Autolayup */,
 				76831CF01E46CE5B00083D1F /* Autolayup-iOS */,
 				76831CFB1E46CE5B00083D1F /* Autolayup-iOSTests */,
@@ -637,6 +639,7 @@
 				76831D021E46CE5B00083D1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76831D031E46CE5B00083D1F /* Build configuration list for PBXNativeTarget "Autolayup-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -645,6 +648,7 @@
 				76831D051E46CE5B00083D1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76831D1C1E46CE6600083D1F /* Build configuration list for PBXNativeTarget "Autolayup-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -653,6 +657,7 @@
 				76831D1E1E46CE6600083D1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76831D1F1E46CE6600083D1F /* Build configuration list for PBXNativeTarget "Autolayup-tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -661,6 +666,7 @@
 				76831D211E46CE6600083D1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
