@@ -36,7 +36,7 @@
 - (void)testFrameConstraints {
     XCTAssert(CGRectEqualToRect(self.testView.bounds, CGRectZero), @"View should have no dimensions yet.");
     
-    NSArray<NSLayoutConstraint *> *constraints = [self.testView constraintsEqualToGuide:self.testViewController.view constraintOptions:LayoutAnchorRelationFrame constant:0.0 activate:YES];
+    NSArray<NSLayoutConstraint *> *constraints = [self.testView constraintsEqualToGuide:self.testViewController.view boundToAnchors:LayoutAnchorRelationFrame constant:0.0 activate:YES];
     XCTAssert(constraints.count == 4, @"Insufficient constraints created");
     
     XCTAssert(!self.testView.translatesAutoresizingMaskIntoConstraints, @"Didn't automatically set translatesAutoresizingMaskIntoConstraints to NO");
@@ -52,10 +52,10 @@
     
     CGFloat horizontalInset = 8.0;
     CGFloat verticalInset = 4.0;
-    NSArray<NSLayoutConstraint *> *horizontalConstraints = [self.testView opposingConstraintsForGuide:self.testViewController.view opposingConstraints:(LayoutAnchorRelationLeading | LayoutAnchorRelationTrailing) offset:horizontalInset activate:YES];
+    NSArray<NSLayoutConstraint *> *horizontalConstraints = [self.testView opposingConstraintsForGuide:self.testViewController.view boundToAnchors:(LayoutAnchorRelationLeading | LayoutAnchorRelationTrailing) offset:horizontalInset activate:YES];
     XCTAssert(horizontalConstraints.count == 2, @"Insufficient constraints created");
     
-    NSArray<NSLayoutConstraint *> *verticalConstraints = [self.testView opposingConstraintsForGuide:self.testViewController.view opposingConstraints:(LayoutAnchorRelationTop | LayoutAnchorRelationBottom) offset:verticalInset activate:YES];
+    NSArray<NSLayoutConstraint *> *verticalConstraints = [self.testView opposingConstraintsForGuide:self.testViewController.view boundToAnchors:(LayoutAnchorRelationTop | LayoutAnchorRelationBottom) offset:verticalInset activate:YES];
     XCTAssert(verticalConstraints.count == 2, @"Insufficient constraints created");
     
     XCTAssert(!self.testView.translatesAutoresizingMaskIntoConstraints, @"Didn't automatically set translatesAutoresizingMaskIntoConstraints to NO");

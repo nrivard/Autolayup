@@ -15,8 +15,8 @@ extension UIView {
     /// constant is more appropriate for a single constraint. if you want an inset you should really use opposingConstraintsFor(_:::)
     /// you could also use a convenience set of constraints like .frame, .size, or .center
     /// if activate is true (the default) then constraints will be activated for you.
-    @objc(constraintsEqualToGuide:constraintOptions:constant:activate:)
-    @discardableResult public func constraintsEqualTo(_ guide: LayoutAnchorProviding, constraintOptions: LayoutAnchorRelation, constant: CGFloat = 0.0, activate: Bool = true) -> [NSLayoutConstraint] {
+    @objc(constraintsEqualToGuide:boundToAnchors:constant:activate:)
+    @discardableResult public func constraintsEqualTo(_ guide: LayoutAnchorProviding, boundTo constraintOptions: LayoutAnchorRelation, constant: CGFloat = 0.0, activate: Bool = true) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         
         var constraints: [NSLayoutConstraint] = []
@@ -63,8 +63,8 @@ extension UIView {
     /// this function looks for specific pairings of layout constraints, offsets one by the offset, and offets another by -(offset)
     /// for ex: [.top, .bottom] offset by 8.0 would offset .top by 8 and .bottom by -8.0
     /// also supports [.leading, .trailing] right now
-    @objc(opposingConstraintsForGuide:opposingConstraints:offset:activate:)
-    @discardableResult public func opposingConstraintsFor(_ guide: LayoutAnchorProviding, opposingConstraints: LayoutAnchorRelation, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
+    @objc(opposingConstraintsForGuide:boundToAnchors:offset:activate:)
+    @discardableResult public func opposingConstraintsFor(_ guide: LayoutAnchorProviding, boundTo opposingConstraints: LayoutAnchorRelation, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         
         let constraints: [NSLayoutConstraint]
