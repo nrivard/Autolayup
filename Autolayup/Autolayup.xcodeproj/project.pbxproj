@@ -269,6 +269,7 @@
 					76831CEE1E46CE5B00083D1F = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = ZL7L5KH6AL;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					76831CF61E46CE5B00083D1F = {
@@ -503,7 +504,8 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -527,7 +529,8 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
