@@ -1,7 +1,7 @@
 # Autolayup
 *Everyone can use autolayout this close to the basket.*
 
-Autolayup is a framework for easy, succint, and standard use of autolayout on iOS and tvOS. It's primary goal is to get rid of a lot of the boilerplate of using pure, code-driven autolayout constraints. `NSLayoutAnchor` made things slightly less verbose but you still end up with a lot of code like this:
+Autolayup is a framework for easy, succint, and standard use of autolayout on iOS and tvOS. It is available in both Swift and Objective-C. It's primary goal is to get rid of a lot of the boilerplate of using pure, code-driven autolayout constraints. `NSLayoutAnchor` made things slightly less verbose but you still end up with a lot of code like this:
 
 ```swift
 subview.translatesAutoresizingMaskIntoConstraints = false
