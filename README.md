@@ -14,19 +14,37 @@ subview.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 In Autolayup, this is an easy to understand one-liner:
 
 ```swift
-subview.constraintsEqualTo(view, constraintOptions: [.frame])
+subview.constraintsEqualTo(view, boundTo: [.frame])
+```
+
+or
+
+```objective-c
+[subview constraintsEqualToGuide:view boundToAnchors:LayoutAnchorRelationFrame constant:0.0 activate:YES];
 ```
 
 Autolayup takes care of making sure your autoresizing mask is turned off, by default activates your constraints, and lets you specify actual relationships much more easily. Another common scenario is creating constraints that are set off the same amount, like leading and trailing margin from your superview:
 
 ```swift
-subview.opposingConstraintsFor(view, opposingConstraints: [.leading, .trailing], offsetBy: 8.0)
+subview.opposingConstraintsFor(view, boundTo: [.leading, .trailing], offsetBy: 8.0)
+```
+
+or
+
+```objective-c
+[subview opposingConstraintsForGuide:view boundToAnchors:(LayoutAnchorRelationLeading | LayoutAnchorRelationTrailing) offset:8.0 activate:YES];
 ```
 
 Autolayup also has full `UILayoutGuide` support by default. Many new features in iOS and tvOS 11 are related to newly vended layout guides. This isn't a problem for Autolayup:
 
 ```swift
-subview.constraintsEqualTo(view.safeAreaLayoutGuide, constraintOptions: [.frame])
+subview.constraintsEqualTo(view.safeAreaLayoutGuide, boundTo: [.frame])
+```
+
+or
+
+```objective-c
+[subview constraintsEqualToGuide:view.safeAreaLayoutGuide boundToAnchors:LayoutAnchorRelationFrame constant:0.0 activate:YES];
 ```
 
 # Installation using CocoaPods
