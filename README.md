@@ -38,6 +38,9 @@ Just create a Podfile and add the following:
 ```
 pod 'Autolayup'
 ```
+# Author
+
+[Nate Rivard](http://nrivard.github.io)
 
 # License
 
