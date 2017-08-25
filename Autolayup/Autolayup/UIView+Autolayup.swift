@@ -1,6 +1,6 @@
 //
-//  NSLayoutConstraint+RecordHolder.swift
-//  Record Holder
+//  UIView+Autolayup.swift
+//  Autolayup
 //
 //  Created by nate rivard on 5/10/15.
 //  Copyright (c) 2015 nate rivard. All rights reserved.
@@ -15,8 +15,10 @@ extension UIView {
     /// constant is more appropriate for a single constraint. if you want an inset you should really use opposingConstraintsFor(_:::)
     /// you could also use a convenience set of constraints like .frame, .size, or .center
     /// if activate is true (the default) then constraints will be activated for you.
-    @objc(constraintsEqualToView:constraintOptions:constant:activate:)
-    @discardableResult public func constraintsEqualTo(_ guide: LayoutAnchorProviding, constraintOptions: NSLayoutConstraintRelatedAttribute, constant: CGFloat = 0.0, activate: Bool = true) -> [NSLayoutConstraint] {
+    @objc(constraintsEqualToGuide:constraintOptions:constant:activate:)
+    @discardableResult public func constraintsEqualTo(_ guide: LayoutAnchorProviding, constraintOptions: LayoutAnchorRelation, constant: CGFloat = 0.0, activate: Bool = true) -> [NSLayoutConstraint] {
+        translatesAutoresizingMaskIntoConstraints = false
+        
         var constraints: [NSLayoutConstraint] = []
         
         if constraintOptions.contains(.top) {
@@ -61,8 +63,10 @@ extension UIView {
     /// this function looks for specific pairings of layout constraints, offsets one by the offset, and offets another by -(offset)
     /// for ex: [.top, .bottom] offset by 8.0 would offset .top by 8 and .bottom by -8.0
     /// also supports [.leading, .trailing] right now
-    @objc(opposingConstraintsForView:opposingConstraints:offset:activate:)
-    @discardableResult public func opposingConstraintsFor(_ guide: LayoutAnchorProviding, opposingConstraints: NSLayoutConstraintRelatedAttribute, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
+    @objc(opposingConstraintsForGuide:opposingConstraints:offset:activate:)
+    @discardableResult public func opposingConstraintsFor(_ guide: LayoutAnchorProviding, opposingConstraints: LayoutAnchorRelation, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
+        translatesAutoresizingMaskIntoConstraints = false
+        
         let constraints: [NSLayoutConstraint]
         
         if opposingConstraints.contains(.top) && opposingConstraints.contains(.bottom) {
@@ -84,13 +88,15 @@ extension UIView {
     /// ex: .height == 40.0
     @objc(constraintForAttribute:constant:activate:)
     @discardableResult public func constraintFor(_ attribute: NSLayoutAttribute, equalTo constant: CGFloat, activate: Bool = true) -> NSLayoutConstraint {
+        translatesAutoresizingMaskIntoConstraints = false
+        
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
         constraint.isActive = activate
         return constraint
     }
 }
 
-extension NSLayoutConstraintRelatedAttribute: Hashable {
+extension LayoutAnchorRelation: Hashable {
 
     public var hashValue: Int {
         return Int(self.rawValue)

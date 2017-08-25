@@ -11,10 +11,10 @@
 		76831CFD1E46CE5B00083D1F /* Autolayup_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76831CFC1E46CE5B00083D1F /* Autolayup_iOSTests.m */; };
 		76831D141E46CE6600083D1F /* Autolayup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76831D0B1E46CE6600083D1F /* Autolayup.framework */; };
 		76831D191E46CE6600083D1F /* Autolayup_tvOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76831D181E46CE6600083D1F /* Autolayup_tvOSTests.m */; };
-		76831D221E46CE9600083D1F /* NSLayoutConstraint+Autolayup.h in Headers */ = {isa = PBXBuildFile; fileRef = 76831CC81E46CAF600083D1F /* NSLayoutConstraint+Autolayup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76831D231E46CE9700083D1F /* NSLayoutConstraint+Autolayup.h in Headers */ = {isa = PBXBuildFile; fileRef = 76831CC81E46CAF600083D1F /* NSLayoutConstraint+Autolayup.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76831D241E46CE9F00083D1F /* NSLayoutConstraint+Autolayup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76831CCA1E46CB1600083D1F /* NSLayoutConstraint+Autolayup.swift */; };
-		76831D251E46CEA000083D1F /* NSLayoutConstraint+Autolayup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76831CCA1E46CB1600083D1F /* NSLayoutConstraint+Autolayup.swift */; };
+		76831D221E46CE9600083D1F /* LayoutAnchorRelation.h in Headers */ = {isa = PBXBuildFile; fileRef = 76831CC81E46CAF600083D1F /* LayoutAnchorRelation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76831D231E46CE9700083D1F /* LayoutAnchorRelation.h in Headers */ = {isa = PBXBuildFile; fileRef = 76831CC81E46CAF600083D1F /* LayoutAnchorRelation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76831D241E46CE9F00083D1F /* UIView+Autolayup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76831CCA1E46CB1600083D1F /* UIView+Autolayup.swift */; };
+		76831D251E46CEA000083D1F /* UIView+Autolayup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76831CCA1E46CB1600083D1F /* UIView+Autolayup.swift */; };
 		76831D261E46CED000083D1F /* Autolayup.h in Headers */ = {isa = PBXBuildFile; fileRef = 76831CB11E46CADD00083D1F /* Autolayup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76831D271E46CED100083D1F /* Autolayup.h in Headers */ = {isa = PBXBuildFile; fileRef = 76831CB11E46CADD00083D1F /* Autolayup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76A55E041F4648A8004F0212 /* LayoutAnchorProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A55E031F4648A8004F0212 /* LayoutAnchorProviding.swift */; };
@@ -42,8 +42,8 @@
 		762848851E8ED6580039A141 /* Autolayup.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Autolayup.podspec; sourceTree = "<group>"; };
 		76831CB11E46CADD00083D1F /* Autolayup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autolayup.h; sourceTree = "<group>"; };
 		76831CB21E46CADD00083D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76831CC81E46CAF600083D1F /* NSLayoutConstraint+Autolayup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+Autolayup.h"; sourceTree = "<group>"; };
-		76831CCA1E46CB1600083D1F /* NSLayoutConstraint+Autolayup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Autolayup.swift"; sourceTree = "<group>"; };
+		76831CC81E46CAF600083D1F /* LayoutAnchorRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutAnchorRelation.h; sourceTree = "<group>"; };
+		76831CCA1E46CB1600083D1F /* UIView+Autolayup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayup.swift"; sourceTree = "<group>"; };
 		76831CEF1E46CE5B00083D1F /* Autolayup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Autolayup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76831CF21E46CE5B00083D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76831CF71E46CE5B00083D1F /* Autolayup-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Autolayup-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,8 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				76A55E031F4648A8004F0212 /* LayoutAnchorProviding.swift */,
-				76831CCA1E46CB1600083D1F /* NSLayoutConstraint+Autolayup.swift */,
-				76831CC81E46CAF600083D1F /* NSLayoutConstraint+Autolayup.h */,
+				76831CCA1E46CB1600083D1F /* UIView+Autolayup.swift */,
+				76831CC81E46CAF600083D1F /* LayoutAnchorRelation.h */,
 				76831CB11E46CADD00083D1F /* Autolayup.h */,
 				76831CB21E46CADD00083D1F /* Info.plist */,
 			);
@@ -169,7 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76831D261E46CED000083D1F /* Autolayup.h in Headers */,
-				76831D221E46CE9600083D1F /* NSLayoutConstraint+Autolayup.h in Headers */,
+				76831D221E46CE9600083D1F /* LayoutAnchorRelation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76831D271E46CED100083D1F /* Autolayup.h in Headers */,
-				76831D231E46CE9700083D1F /* NSLayoutConstraint+Autolayup.h in Headers */,
+				76831D231E46CE9700083D1F /* LayoutAnchorRelation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76831D241E46CE9F00083D1F /* NSLayoutConstraint+Autolayup.swift in Sources */,
+				76831D241E46CE9F00083D1F /* UIView+Autolayup.swift in Sources */,
 				76A55E041F4648A8004F0212 /* LayoutAnchorProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,7 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76831D251E46CEA000083D1F /* NSLayoutConstraint+Autolayup.swift in Sources */,
+				76831D251E46CEA000083D1F /* UIView+Autolayup.swift in Sources */,
 				76A55E051F4648A8004F0212 /* LayoutAnchorProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

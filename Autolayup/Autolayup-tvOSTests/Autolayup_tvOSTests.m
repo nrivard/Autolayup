@@ -1,6 +1,6 @@
 //
-//  Autolayup_tvOSTests.m
-//  Autolayup-tvOSTests
+//  Autolayup_iOSTests.m
+//  Autolayup-iOSTests
 //
 //  Created by Nate Rivard on 2/4/17.
 //  Copyright © 2017 Nate Rivard. All rights reserved.
@@ -8,32 +8,79 @@
 
 #import <XCTest/XCTest.h>
 
-@interface Autolayup_tvOSTests : XCTestCase
+@import Autolayup;
 
+@interface Autolayup_tvOSTests : XCTestCase
+@property (nonatomic, retain) UIViewController *testViewController;
+@property (nonatomic, retain) UIView *testView;
 @end
 
 @implementation Autolayup_tvOSTests
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    self.testViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    self.testView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [self.testViewController.view addSubview:self.testView];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    
+    self.testViewController = nil;
+    self.testView = nil;
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testFrameConstraints {
+    XCTAssert(CGRectEqualToRect(self.testView.bounds, CGRectZero), @"View should have no dimensions yet.");
+    
+    NSArray<NSLayoutConstraint *> *constraints = [self.testView constraintsEqualToGuide:self.testViewController.view constraintOptions:LayoutAnchorRelationFrame constant:0.0 activate:YES];
+    XCTAssert(constraints.count == 4, @"Insufficient constraints created");
+    
+    XCTAssert(!self.testView.translatesAutoresizingMaskIntoConstraints, @"Didn't automatically set translatesAutoresizingMaskIntoConstraints to NO");
+    
+    [self.testView setNeedsLayout];
+    [self.testView layoutIfNeeded];
+    
+    XCTAssert(CGRectEqualToRect(self.testView.bounds, self.testViewController.view.bounds), @"Incorrect frame constraints: %@ vs. %@", NSStringFromCGRect(self.testView.bounds), NSStringFromCGRect(self.testViewController.view.bounds));
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testOpposingConstraints {
+    XCTAssert(CGRectEqualToRect(self.testView.bounds, CGRectZero), @"View should have no dimensions yet.");
+    
+    CGFloat horizontalInset = 8.0;
+    CGFloat verticalInset = 4.0;
+    NSArray<NSLayoutConstraint *> *horizontalConstraints = [self.testView opposingConstraintsForGuide:self.testViewController.view opposingConstraints:(LayoutAnchorRelationLeading | LayoutAnchorRelationTrailing) offset:horizontalInset activate:YES];
+    XCTAssert(horizontalConstraints.count == 2, @"Insufficient constraints created");
+    
+    NSArray<NSLayoutConstraint *> *verticalConstraints = [self.testView opposingConstraintsForGuide:self.testViewController.view opposingConstraints:(LayoutAnchorRelationTop | LayoutAnchorRelationBottom) offset:verticalInset activate:YES];
+    XCTAssert(verticalConstraints.count == 2, @"Insufficient constraints created");
+    
+    XCTAssert(!self.testView.translatesAutoresizingMaskIntoConstraints, @"Didn't automatically set translatesAutoresizingMaskIntoConstraints to NO");
+    
+    [self.testView setNeedsLayout];
+    [self.testView layoutIfNeeded];
+    
+    CGRect insetRect = CGRectInset(self.testViewController.view.bounds, horizontalInset, verticalInset);
+    XCTAssert(CGSizeEqualToSize(self.testView.bounds.size, insetRect.size), @"Incorrect opposing constraints: %@ vs. %@", NSStringFromCGSize(self.testView.bounds.size), NSStringFromCGSize(insetRect.size));
+}
+
+- (void)testConstantConstraint {
+    XCTAssert(CGRectEqualToRect(self.testView.bounds, CGRectZero), @"View should have no dimensions yet.");
+    
+    CGSize size = CGSizeMake(100.0, 50.0);
+    
+    [self.testView constraintForAttribute:NSLayoutAttributeHeight constant:size.height activate:YES];
+    [self.testView constraintForAttribute:NSLayoutAttributeWidth constant:size.width activate:YES];
+    
+    XCTAssert(!self.testView.translatesAutoresizingMaskIntoConstraints, @"Didn't automatically set translatesAutoresizingMaskIntoConstraints to NO");
+    
+    [self.testView setNeedsLayout];
+    [self.testView layoutIfNeeded];
+    
+    XCTAssert(CGSizeEqualToSize(self.testView.bounds.size, size), @"Incorrect opposing constraints: %@ vs. %@", NSStringFromCGSize(self.testView.bounds.size), NSStringFromCGSize(size));
 }
 
 @end

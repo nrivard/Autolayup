@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char AutolayupVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Autolayup/PublicHeader.h>
 
-#import <Autolayup/NSLayoutConstraint+Autolayup.h>
+#import <Autolayup/LayoutAnchorRelation.h>
