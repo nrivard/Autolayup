@@ -23,7 +23,7 @@ or
 [subview constraintsEqualToGuide:view boundToAnchors:LayoutAnchorRelationFrame constant:0.0 activate:YES];
 ```
 
-Autolayup takes care of making sure your autoresizing mask is turned off, by default activates your constraints, and lets you specify actual relationships much more easily. Another common scenario is creating constraints that are set off the same amount, like leading and trailing margin from your superview:
+Autolayup takes care of making sure your autoresizing mask is turned off, by default activates your constraints, and lets you specify actual relationships much more easily. Another common scenario is creating constraints that are set off by the same amount, like leading and trailing margin from your superview:
 
 ```swift
 subview.opposingConstraintsFor(view, boundTo: [.leading, .trailing], offsetBy: 8.0)
