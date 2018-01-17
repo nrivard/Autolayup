@@ -14,9 +14,10 @@ extension UIView {
     /// for ex: [.top, .leading, .bottom, .trailing] would create constraints where self's frame is the same as the provided guide's
     /// constant is more appropriate for a single constraint. if you want an inset you should really use opposingConstraintsFor(_:::)
     /// you could also use a convenience set of constraints like .frame, .size, or .center
+    /// set a priority to all generated constraints, which by default, is .required
     /// if activate is true (the default) then constraints will be activated for you.
-    @objc(constraintsEqualToGuide:boundToAnchors:constant:activate:)
-    @discardableResult public func constraintsEqualTo(_ guide: LayoutAnchorProviding, boundTo constraintOptions: LayoutAnchorRelation, constant: CGFloat = 0.0, activate: Bool = true) -> [NSLayoutConstraint] {
+    @objc(constraintsEqualToGuide:boundToAnchors:constant:priority:activate:)
+    @discardableResult public func constraintsEqualTo(_ guide: LayoutAnchorProviding, boundTo constraintOptions: LayoutAnchorRelation, constant: CGFloat = 0.0, priority: UILayoutPriority = .required, activate: Bool = true) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         
         var constraints: [NSLayoutConstraint] = []
@@ -53,8 +54,9 @@ extension UIView {
             constraints.append(self.widthAnchor.constraint(equalTo: guide.widthAnchor, constant: constant))
         }
         
-        if activate {
-            NSLayoutConstraint.activate(constraints)
+        constraints.forEach {
+            $0.priority = priority
+            $0.isActive = activate
         }
         
         return constraints
@@ -63,22 +65,23 @@ extension UIView {
     /// this function looks for specific pairings of layout constraints, offsets one by the offset, and offets another by -(offset)
     /// for ex: [.top, .bottom] offset by 8.0 would offset .top by 8 and .bottom by -8.0
     /// also supports [.leading, .trailing] right now
-    @objc(opposingConstraintsForGuide:boundToAnchors:offset:activate:)
-    @discardableResult public func opposingConstraintsFor(_ guide: LayoutAnchorProviding, boundTo opposingConstraints: LayoutAnchorRelation, offsetBy offset: CGFloat, activate: Bool = true) -> [NSLayoutConstraint] {
+    @objc(opposingConstraintsForGuide:boundToAnchors:offset:priority:activate:)
+    @discardableResult public func opposingConstraintsFor(_ guide: LayoutAnchorProviding, boundTo opposingConstraints: LayoutAnchorRelation, offsetBy offset: CGFloat, priority: UILayoutPriority = .required, activate: Bool = true) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         
-        let constraints: [NSLayoutConstraint]
+        var constraints: [NSLayoutConstraint] = []
         
         if opposingConstraints.contains(.top) && opposingConstraints.contains(.bottom) {
-            constraints = [self.topAnchor.constraint(equalTo: guide.topAnchor, constant: offset), self.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -offset)]
-        } else if opposingConstraints.contains(.leading) && opposingConstraints.contains(.trailing) {
-            constraints = [self.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: offset), self.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -offset)]
-        } else {
-            constraints = []
+            constraints += [self.topAnchor.constraint(equalTo: guide.topAnchor, constant: offset), self.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -offset)]
         }
         
-        if activate {
-            NSLayoutConstraint.activate(constraints)
+        if opposingConstraints.contains(.leading) && opposingConstraints.contains(.trailing) {
+            constraints += [self.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: offset), self.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -offset)]
+        }
+        
+        constraints.forEach {
+            $0.priority = priority
+            $0.isActive = activate
         }
         
         return constraints
@@ -86,12 +89,13 @@ extension UIView {
     
     /// Creates a set constraint for a particular attribute without reference to another view
     /// ex: .height == 40.0
-    @objc(constraintForAttribute:constant:activate:)
-    @discardableResult public func constraintFor(_ attribute: NSLayoutAttribute, equalTo constant: CGFloat, activate: Bool = true) -> NSLayoutConstraint {
+    @objc(constraintForAttribute:constant:priority:activate:)
+    @discardableResult public func constraintFor(_ attribute: NSLayoutAttribute, equalTo constant: CGFloat, priority: UILayoutPriority = .required, activate: Bool = true) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
         constraint.isActive = activate
+        constraint.priority = priority
         return constraint
     }
 }
