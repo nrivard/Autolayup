@@ -94,8 +94,8 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
-        constraint.isActive = activate
         constraint.priority = priority
+        constraint.isActive = activate
         return constraint
     }
 }
