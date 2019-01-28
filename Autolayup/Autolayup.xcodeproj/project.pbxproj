@@ -39,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		762848851E8ED6580039A141 /* Autolayup.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Autolayup.podspec; sourceTree = "<group>"; };
 		76831CB11E46CADD00083D1F /* Autolayup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Autolayup.h; sourceTree = "<group>"; };
 		76831CB21E46CADD00083D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76831CC81E46CAF600083D1F /* LayoutAnchorRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutAnchorRelation.h; sourceTree = "<group>"; };
@@ -94,7 +93,6 @@
 		76831CA41E46CADD00083D1F = {
 			isa = PBXGroup;
 			children = (
-				762848851E8ED6580039A141 /* Autolayup.podspec */,
 				76831CB01E46CADD00083D1F /* Autolayup */,
 				76831CF01E46CE5B00083D1F /* Autolayup-iOS */,
 				76831CFB1E46CE5B00083D1F /* Autolayup-iOSTests */,
