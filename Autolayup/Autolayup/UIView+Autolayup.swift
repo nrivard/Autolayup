@@ -90,7 +90,7 @@ extension UIView {
     /// Creates a set constraint for a particular attribute without reference to another view
     /// ex: .height == 40.0
     @objc(constraintForAttribute:constant:priority:activate:)
-    @discardableResult public func constraintFor(_ attribute: NSLayoutAttribute, equalTo constant: CGFloat, priority: UILayoutPriority = .required, activate: Bool = true) -> NSLayoutConstraint {
+    @discardableResult public func constraintFor(_ attribute: NSLayoutConstraint.Attribute, equalTo constant: CGFloat, priority: UILayoutPriority = .required, activate: Bool = true) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
