@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Autolayup"
-  s.version      = "0.1.3"
+  s.version      = "0.2.0"
   s.summary      = "Everyone can use autolayout this close to the basket."
 
   # This description is used to generate tags and improve search results.
@@ -29,7 +29,6 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/nrivard/Autolayup"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
